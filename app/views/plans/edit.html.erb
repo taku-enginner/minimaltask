@@ -1,0 +1,40 @@
+<div class="row mb-4">
+    <div class="col-12">
+        <h2 class="text-center text-primary">📝 タスク名の修正</h2>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <%# フォームヘルパーを使用する場合は、ここに model: @task などを指定 %>
+                <%= form_with model: @plan, method: :patch, local: true do |form| %>                    <%# 修正対象のタスク名表示（読み取り専用） %>
+
+                    <%# 新しいタスク名入力フィールド %>
+                    <div class="mb-3">
+                        <%= form.label :title, '新しいタスク名', class: 'form-label fw-bold' %>
+                        <span class="text-danger">*</span>
+                        <%= form.text_field :title,
+                                            class: 'form-control',
+                                            placeholder: '新しいタスク名を255文字以内で入力してください',
+                                            required: true %>
+                        <div class="form-text">
+                            ここに新しい名前を入力してください。
+                        </div>
+                    </div>
+
+                    <%# ボタンエリア %>
+                    <div class="d-flex justify-content-between mt-4">
+                        <%# 戻るボタン %>
+                        <%= link_to '戻る', plan_path(@plan.id), class: 'btn btn-outline-secondary' %>
+
+                        <%# 修正実行ボタン %>
+                        <%= form.submit '修正を保存', class: 'btn btn-primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+

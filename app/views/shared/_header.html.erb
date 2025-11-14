@@ -1,0 +1,37 @@
+<!-- 1. ナビゲーションバー (ヘッダー) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+        <%# ブランド名/ホームリンク %>
+        <a class="navbar-brand fw-bold" href="<%= root_path %>">タスク管理ボード</a>
+
+        <%# モバイル用トグルボタン %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <%# 左側のナビゲーションリンク %>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <%# 'active'クラスは、現在のページに応じて動的に付与されることを想定しています %>
+                    <a class="nav-link active" aria-current="page" href="<%= root_path %>">ホーム</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= plans_path %>">タスク一覧</a>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "タスク作成", new_plan_path, class:"nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">設定</a>
+                </li>
+            </ul>
+
+            <%# 右側のボタン (ログアウト/ユーザー情報など) %>
+            <div class="d-flex">
+                <%# ログアウトボタン %>
+                <button class="btn btn-outline-light" type="button">ログアウト</button>
+            </div>
+        </div>
+    </div>
+</nav>

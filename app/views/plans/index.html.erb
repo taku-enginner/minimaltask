@@ -1,0 +1,53 @@
+<%= flash[:notice] %>
+<%= @cheer %>
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <!-- メインコンテナ (カード - BootstrapのCardコンポーネント) -->
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card shadow-lg rounded-3">
+
+                <%# カードヘッダー (bg-primary を使用) %>
+                <div class="card-header text-white bg-primary rounded-top-3 p-4">
+                    <h1 class="h3 fw-bold mb-1">
+                        タスク一覧
+                    </h1>
+                    <p class="card-text small text-white-50">
+                        プランのタイトルが表示されます。
+                    </p>
+                </div>
+
+                <!-- リストコンテナ (カードボディ -> List Group) -->
+                <ul class="list-group list-group-flush" id="plan-list">
+                    <%# @plans のデータがない場合の処理 %>
+                    <% if @plans.nil? || @plans.empty? %>
+                        <li class="list-group-item text-center p-4">
+                            <div class="alert alert-warning mb-0" role="alert">
+                                <strong>情報:</strong> 現在、登録されているタスクはありません。
+                            </div>
+                        </li>
+                    <% else %>
+                        <%# ユーザーの元のループ構造を、Bootstrap風のリストアイテムにラッピングします %>
+                        <% @plans.each do |plan| %>
+                            <%# list-group-item-action はホバー時に背景色が変わるクラスです %>
+                            <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                <%# <p>タグを復元し、テキストを装飾します %>
+                                <p class="mb-0 fw-medium text-dark">
+                                    <%= link_to plan.title, plan_path(plan.id) %>
+                                </p>
+
+                                <%# 必要に応じて、ここにタスクの状態を示すBootstrapのバッジを追加できます %>
+                            </li>
+                        <% end %>
+                    <% end %>
+                </ul>
+
+                <%# カードフッター %>
+                <div class="card-footer text-muted small p-3 bg-light rounded-bottom-3">
+                    <p class="mb-0">
+                        表示件数: <%= @plans.size rescue 0 %> 件
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

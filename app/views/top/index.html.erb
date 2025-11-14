@@ -1,0 +1,105 @@
+<!--
+  Bootstrapトップページ - テンプレート
+  TopControllerのindexアクションでレンダリングされます。
+-->
+
+<!-- 1. ナビゲーションバー (Navbar) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <!-- Railsではroot_pathヘルパーを使ってトップページへのリンクを作成するのが慣習的です -->
+        <a class="navbar-brand" href="<%= root_path %>">**MyBrand**</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="<%= root_path %>">ホーム</a>
+                </li>
+                <!-- サービスや事例などのリンクは、将来的に対応するルーティングヘルパーに置き換えてください -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">サービス</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">事例</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">お問い合わせ</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 2. ヒーローセクション (Hero Section) -->
+<header class="py-5 bg-light border-bottom">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <h1 class="display-4 fw-bolder mb-2">**素晴らしいアイデアを形にする**</h1>
+                    <p class="lead fw-normal text-muted mb-4">
+                        私たちのソリューションが、あなたのビジネスを次のレベルへ導きます。今すぐ始めましょう。
+                    </p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">もっと見る</a>
+                        <a class="btn btn-outline-primary btn-lg px-4" href="#contact">お問い合わせ</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 画像のプレースホルダー -->
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+                <div class="p-4 bg-white rounded shadow-sm" style="height: 300px; display: flex; align-items: center; justify-content: center; border: 1px dashed #ccc;">
+                    サービスを象徴する画像やスクリーンショット
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- 3. 機能紹介セクション (Features Section) -->
+<section class="py-5" id="features">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h2 class="fw-bolder mb-0">お客様の課題を解決する機能</h2>
+            </div>
+            <div class="col-lg-8">
+                <div class="row gx-5 row-cols-1 row-cols-md-2">
+                    <!-- 機能 1 -->
+                    <div class="col mb-5 h-100">
+                        <!-- bi-collectionなどのアイコンはBootstrap Icons（別途読み込みが必要）のクラスです。ここではプレースホルダーとして残しています。 -->
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                        <h2 class="h5">**高速なレスポンス**</h2>
+                        <p class="mb-0">最新の技術スタックで構築され、ユーザーにストレスのない体験を提供します。</p>
+                    </div>
+                    <!-- 機能 2 -->
+                    <div class="col mb-5 h-100">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+                        <h2 class="h5">**簡単なカスタマイズ**</h2>
+                        <p class="mb-0">直感的なインターフェースで、コードを書かずにデザインを変更できます。</p>
+                    </div>
+                    <!-- 機能 3 -->
+                    <div class="col mb-5 mb-md-0 h-100">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                        <h2 class="h5">**万全なセキュリティ**</h2>
+                        <p class="mb-0">業界標準のセキュリティ対策を実装し、大切なデータを守ります。</p>
+                    </div>
+                    <!-- 機能 4 -->
+                    <div class="col h-100">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                        <h2 class="h5">**24時間サポート**</h2>
+                        <p class="mb-0">専門チームによる手厚いサポート体制で、安心してお使いいただけます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. フッター (Footer) -->
+<footer class="py-4 bg-dark">
+    <div class="container px-5">
+        <p class="m-0 text-center text-white">Copyright &copy; MyBrand <%= Time.now.year %></p>
+    </div>
+</footer>

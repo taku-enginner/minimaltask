@@ -1,0 +1,28 @@
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <!-- メインコンテナの幅設定 -->
+        <div class="col-12 col-md-8 col-lg-6">
+
+            <!-- フォームカード -->
+            <div class="card shadow-lg mb-4 rounded-3 border-info">
+                <div class="card-header bg-info text-white p-3">
+                    <h2 class="h5 mb-0 fw-bold">新しいタスクを追加</h2>
+                </div>
+                <div class="card-body p-4">
+                    <%# ユーザー提供のフォームヘルパーをBootstrapクラスで装飾 %>
+                    <%= form_with model: @plan, local: true do |form| %>
+                        <div class="mb-3">
+                            <%# form-label クラスを適用 %>
+                            <%= form.label :title, "タスク名", class: "form-label fw-semibold" %>
+                            <%# form-control クラスを適用 %>
+                            <%= form.text_field :title, class: "form-control form-control-lg", placeholder: "例: 身支度をする" %>
+                        </div>
+
+                        <%# btn と btn-primary クラスを適用 %>
+                        <%= form.submit "タスクを登録", class: "btn btn-primary btn-lg w-100" %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="text-center text-info">⭐ タスク詳細</h2>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card shadow-lg">
+                <div class="card-header bg-info text-white">
+                    <%# タイトル (name) を表示 %>
+                    <h3 class="mb-0"><%= @plan.title %></h3>
+                </div>
+                <div class="card-body">
+
+                    <dl class="row">
+                        <%# ステータス %>
+                        <dt class="col-sm-3 fw-bold">ステータス</dt>
+                        <dd class="col-sm-9">
+                            <%# ステータスの値によってバッジの色を動的に変更する %>
+                            <% status_class = case @plan.status.to_sym
+                                when :plan then 'bg-warning text-dark'
+                                when :done then 'bg-success'
+                                else 'bg-secondary'
+                            end %>
+                            <span class="badge <%= status_class %>"><%= @plan.status.capitalize %></span>
+                        </dd>
+                    </dl>
+
+                </div>
+            </div>
+
+            <%# --- 操作ボタンエリア --- %>
+            <div class="d-flex justify-content-between mt-4">
+
+                <%# 戻るボタン %>
+                <%= link_to '一覧に戻る', plans_path, class: 'btn btn-outline-secondary' %>
+
+                <div>
+                    <%# 編集ボタン (タスク修正ページへの導線) %>
+                    <%= link_to '📝 編集', edit_plan_path(@plan), class: 'btn btn-success me-2' %>
+
+                    <%# 削除ボタン (確認ダイアログ付き) %>
+                    <%= button_to '🗑️ 削除', plan_path(@plan),
+                                method: :delete,
+                                data: { confirm: '本当にこのタスクを削除しますか？' },
+                                class: 'btn btn-danger' %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
