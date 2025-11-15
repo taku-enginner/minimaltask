@@ -1,6 +1,7 @@
 class PlansController < ApplicationController
   def index
-    @cheer = Cheer.all.sample.cheer
+    @cheer_all = Cheer.all
+    @cheer = @cheer_all.sample.cheer if @cheer_all.count > 0
     @plans = Plan.all
   end
 
@@ -15,7 +16,8 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
-    @cheer = Cheer.all.sample.cheer
+    @cheer_all = Cheer.all
+    @cheer = @cheer_all.sample.cheer if @cheer_all.count > 0
     if @plan.save
       flash[:notice] = @cheer
       redirect_to plans_path
